@@ -6,7 +6,7 @@ const Cards = () => {
   return (
     <ul className={styles.cards}>
       {data.map((value) => (
-        <Card card={value} />
+        <Card key={value} card={value} />
       ))}
     </ul>
   );

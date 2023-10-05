@@ -46,18 +46,16 @@
     padding: 5px 10px;
   }
 
-  .text {
-    font-size: 14px;
-  }
-
-  .value {
-    font-size: 14px;
-  }
-
   .textContainer {
     gap: 10px;
   }
 
   .text {
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .value {
+    font-size: 14px;
   }
 }

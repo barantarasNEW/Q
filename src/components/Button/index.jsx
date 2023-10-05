@@ -6,7 +6,7 @@ const Button = () => {
   return (
     <button className={styles.button}>
       GI-GRO
-      <FaCrown size={14} />P
+      <FaCrown className={styles.icon} />P
     </button>
   );
 };

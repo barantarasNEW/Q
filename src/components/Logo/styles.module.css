@@ -2,12 +2,13 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   font-size: 18px;
   font-weight: 700;
-  position: relative;
   text-align: center;
+  position: relative;
 }
 
 .logo::after {
@@ -42,16 +43,8 @@
 }
 
 @media screen and (max-width: 500px) {
-  .logo {
-    justify-content: center;
-  }
-
   .textContainer {
     flex-direction: column;
-  }
-
-  .text:not(:last-child) {
-    padding-bottom: 10px;
   }
 
   .text:not(:last-child)::after {
@@ -63,5 +56,9 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+  }
+
+  .text:not(:last-child) {
+    padding-bottom: 10px;
   }
 }
