@@ -1,0 +1,67 @@
+.logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+}
+
+.logo::after {
+  content: "";
+  width: 50%;
+  height: 1px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.icon {
+  display: block;
+  font-size: 30px;
+  color: var(--primary-color);
+}
+
+.textContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.text {
+  position: relative;
+}
+
+.text:not(:last-child)::after {
+  content: "|";
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    justify-content: center;
+  }
+
+  .textContainer {
+    flex-direction: column;
+  }
+
+  .text:not(:last-child) {
+    padding-bottom: 10px;
+  }
+
+  .text:not(:last-child)::after {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+}

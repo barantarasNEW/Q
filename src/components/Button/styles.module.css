@@ -1,0 +1,33 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: #fff;
+  background-image: linear-gradient(
+    to right,
+    var(--primary-color) 0%,
+    #928dab 51%,
+    #1f1c2c 100%
+  );
+  background-size: 200% auto;
+  border: none;
+  border-radius: var(--primary-border-radius);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  .button {
+    align-self: stretch;
+  }
+}
