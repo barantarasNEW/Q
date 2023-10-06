@@ -1,5 +1,4 @@
 import { ImArrowRight } from "react-icons/im";
-import { FaCircle } from "react-icons/fa";
 
 import Button from "../Button";
 import Logo from "../Logo";
@@ -39,9 +38,7 @@ const Card = ({ card: { win4, win6, win16 } }) => {
         <p className={styles.text}>
           <span>Úroven rizika WIN-série</span>{" "}
           <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>
-            Vyhovujici <FaCircle size={15} color="white" />
-          </span>
+          <span className={styles.value}>Vyhovujici</span>
         </p>
       </div>
 
