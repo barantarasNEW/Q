@@ -1,0 +1,17 @@
+.history-enter {
+  max-height: 0;
+}
+
+.history-enter-active {
+  max-height: 400px; /* Встановіть бажану максимальну висоту */
+  transition: opacity 300ms, max-height 300ms;
+}
+
+.history-exit {
+  min-height: 400px; /* Встановіть бажану максимальну висоту */
+}
+
+.history-exit-active {
+  max-height: 0;
+  transition: opacity 300ms, max-height 300ms;
+}

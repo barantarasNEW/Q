@@ -4,6 +4,7 @@ import {
   Forward,
   History as MUIHistory,
 } from "@mui/icons-material";
+import { CSSTransition } from "react-transition-group";
 
 import Button from "../Button";
 import CardLogo from "../CardLogo";
@@ -69,16 +70,25 @@ const Card = ({ card, bg = "inherit", disabled = false }) => {
         </CardActions>
       )}
 
-      {isActiveHistory && (
-        <Styled.Content>
-          <Typography variant="h3">
-            <Icon component={MUIHistory} fontSize="medium" />
-            History
-          </Typography>
+      <CSSTransition
+        in={isActiveHistory}
+        timeout={300} // Задайте тривалість анімації в мілісекундах
+        classNames="history"
+        unmountOnExit
+      >
+        {isActiveHistory ? (
+          <Styled.Content>
+            <Typography variant="h3">
+              <Icon component={MUIHistory} fontSize="medium" />
+              History
+            </Typography>
 
-          <History />
-        </Styled.Content>
-      )}
+            <History />
+          </Styled.Content>
+        ) : (
+          <></>
+        )}
+      </CSSTransition>
     </Styled.Card>
   );
 };

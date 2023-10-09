@@ -5,6 +5,7 @@ import Cards from "./components/Cards";
 import Select from "./components/Select";
 import Logo from "./components/Logo";
 import * as Styled from "./styles";
+import "./styles/style.css";
 
 const App = () => {
   return (

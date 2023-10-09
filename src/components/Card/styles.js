@@ -8,6 +8,8 @@ import styled from "@emotion/styled";
 
 export const Card = styled(MUICard)(({ theme: { spacing, breakpoints } }) => ({
   gap: spacing(1),
+  overflow: "hidden",
+  transition: "all 0.3s ease",
 
   [breakpoints.up("md")]: {
     "&:hover": {
