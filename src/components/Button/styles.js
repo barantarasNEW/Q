@@ -15,7 +15,7 @@ export const Button = styled(Link)(
     borderRadius: PRIMARY_BORDER_RADIUS,
     transition: `all 300ms`,
 
-    [breakpoints.up("sm")]: {
+    [breakpoints.up("md")]: {
       "&:hover": {
         opacity: 0.8,
       },

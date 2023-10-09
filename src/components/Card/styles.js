@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 export const Card = styled(MUICard)(({ theme: { spacing, breakpoints } }) => ({
   gap: spacing(1),
 
-  [breakpoints.up("sm")]: {
+  [breakpoints.up("md")]: {
     "&:hover": {
       boxShadow:
         "rgba(255, 255, 255, 0.12) 0px 2px 4px 0px, rgba(255, 255, 255, 0.32) 0px 2px 16px 0px",
