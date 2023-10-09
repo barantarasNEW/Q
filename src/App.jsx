@@ -1,11 +1,26 @@
+import { CssBaseline, ThemeProvider } from "@mui/material";
+
+import theme from "./theme";
 import Cards from "./components/Cards";
-import styles from "./styles/styles.module.css";
+import Select from "./components/Select";
+import Logo from "./components/Logo";
+import * as Styled from "./styles";
 
 const App = () => {
   return (
-    <main className={styles.main}>
-      <Cards />
-    </main>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <Styled.Main>
+          <Styled.Header>
+            <Logo />
+
+            <Select />
+          </Styled.Header>
+
+          <Cards />
+        </Styled.Main>
+      </CssBaseline>
+    </ThemeProvider>
   );
 };
 

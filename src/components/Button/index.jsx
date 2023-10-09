@@ -1,13 +1,18 @@
-import { FaCrown } from "react-icons/fa";
+import { Icon } from "@mui/material";
+import { ElectricBolt } from "@mui/icons-material";
 
-import styles from "./styles.module.css";
+import * as Styled from "./styles";
 
 const Button = () => {
   return (
-    <button className={styles.button}>
-      GI-GRO
-      <FaCrown className={styles.icon} />P
-    </button>
+    <Styled.Button
+      href="/"
+      target="_blank"
+      onClick={(e) => e.stopPropagation()}
+    >
+      GI-GROUP
+      <Icon component={ElectricBolt} />
+    </Styled.Button>
   );
 };
 

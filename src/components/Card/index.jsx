@@ -1,49 +1,85 @@
-import { ImArrowRight } from "react-icons/im";
+import { CardActions, Icon, Typography } from "@mui/material";
+import {
+  ArrowCircleDown,
+  Forward,
+  History as MUIHistory,
+} from "@mui/icons-material";
 
 import Button from "../Button";
-import Logo from "../Logo";
-import styles from "./card.module.css";
+import CardLogo from "../CardLogo";
+import History from "../History";
+import { useCard } from "./useCard";
+import * as Styled from "./styles";
+import { useEffect, useRef } from "react";
 
-const Card = ({ card: { win4, win6, win16 } }) => {
+const Card = ({ card, bg = "inherit", disabled = false }) => {
+  const { matches, values, isActiveHistory, setIsActiveHistory } = useCard({
+    card,
+  });
+
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setIsActiveHistory(false);
+      }
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [setIsActiveHistory]);
+
   return (
-    <div className={styles.card}>
-      <Logo />
+    <Styled.Card
+      ref={cardRef}
+      onClick={() => setIsActiveHistory((v) => !v)}
+      style={{
+        pointerEvents: disabled ? "none" : "auto",
+        cursor: disabled ? "default" : "pointer",
+        backgroundColor: bg,
+        boxShadow: isActiveHistory
+          ? "rgba(255, 255, 255, 0.12) 0px 2px 4px 0px, rgba(255, 255, 255, 0.32) 0px 2px 16px 0px"
+          : "",
+      }}
+    >
+      <Styled.Content>
+        <CardLogo />
 
-      <div className={styles.textContainer}>
-        <p className={styles.text}>
-          <span>Celkovy timing WIN-série</span>
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>04:20:30</span>
-        </p>
-        <p className={styles.text}>
-          <span>Celkovy pocet WIN-situaci</span>
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>3</span>
-        </p>
-        <p className={styles.text}>
-          <span>Celkov pocet 4X pojistek</span>
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>{win4}</span>
-        </p>
-        <p className={styles.text}>
-          <span>Celkov pocet 7X pojistek</span>
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>{win6}</span>
-        </p>
-        <p className={styles.text}>
-          <span>Celkov pocet 16X pojistek</span>
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>{win16}</span>
-        </p>
-        <p className={styles.text}>
-          <span>Úroven rizika WIN-série</span>{" "}
-          <ImArrowRight className={styles.icon} />
-          <span className={styles.value}>Vyhovujici</span>
-        </p>
-      </div>
+        <Styled.TextContainer>
+          {values.map(({ title, value }) => (
+            <Styled.Text key={title}>
+              <Styled.SpanTitle>{title}</Styled.SpanTitle>
+              <Icon
+                component={matches ? ArrowCircleDown : Forward}
+                fontSize="medium"
+              />
+              <Styled.SpanValue>{value}</Styled.SpanValue>
+            </Styled.Text>
+          ))}
+        </Styled.TextContainer>
+      </Styled.Content>
 
-      <Button />
-    </div>
+      {!disabled && (
+        <CardActions>
+          <Button />
+        </CardActions>
+      )}
+
+      {isActiveHistory && (
+        <Styled.Content>
+          <Typography variant="h3">
+            <Icon component={MUIHistory} fontSize="medium" />
+            History
+          </Typography>
+
+          <History />
+        </Styled.Content>
+      )}
+    </Styled.Card>
   );
 };
 
